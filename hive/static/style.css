@@ -1,0 +1,60 @@
+body{
+	padding: 0 auto;
+	margin: 0 auto;
+	wdith: 100%;
+	text-align: center;
+	font: calibri, tahoma, arial;
+}
+
+.Nav {
+	height: 100px;
+	padding: 0;
+	margin: 0;
+	border-bottom: thick;
+}
+
+.Nav span{
+	width:50%;
+	display: inline;	
+	float: left;
+	padding-top: 5%;
+	padding-bottom: 5%;
+}
+
+.Nav #a{
+}
+
+.Nav #b{
+}
+
+#Logo {
+	font-size: 50pt;
+	text-outline: #33f;
+}
+
+#JoinBtnContainer Button{
+	margin: 50px;
+	padding: 20px 50px 20px 50px;
+	font-size: 20pt;
+	background: #fff;
+	border: none;
+}
+
+#leaderboard {
+	margin: 0 auto;
+	width: 80%;
+	background-color: #eee;
+	min-height: 50px;
+	text-decoration: inherit;
+}
+
+#leaderboard ul li {
+	list-style: none;
+}
+
+#leaderboard span{
+	text-decoration: none;
+	width: 50%;
+	float: left;
+	display: inline-block;
+}
