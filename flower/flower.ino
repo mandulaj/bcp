@@ -1,3 +1,4 @@
+
 #include <Arduino.h>
 #include <Hash.h>
 #include <ESP8266WiFi.h>
@@ -20,10 +21,10 @@ ESP8266WebServer server(80);
 */
 void handleRoot() {
   count++;
-  String transaction = String(count) + String(pollen) + key;
+  String values = flowerId + ',' + String(count) + ',' + String(pollen) + ',';
   
-  String msg = "http://" + IP + "/" + sha1(transaction);
-  server.send(200, "text/html", "<h1>"+msg+"</h1>");
+  String msg = "http://" + IP + "/" + values + ',' + sha1(values + key);
+  server.send(200, "text/html", "<h1>" + msg + "</h1>");
   
   delay(250);
 }
