@@ -3,7 +3,9 @@ body{
 	margin: 0 auto;
 	wdith: 100%;
 	text-align: center;
-	font: calibri, tahoma, arial;
+	font-family: "Courier New", Courier, monospace;
+	text-font: "Courier New", Courier, monospace;
+	/*background: url(res/twilight.gif);*/
 }
 
 .Nav {
@@ -20,6 +22,7 @@ body{
 	padding-top: 3vh;
 	padding-bottom: 3vh;
 	border-bottom: thick solid grey;
+	background-color: #fff;
 }
 
 .Nav #a{
@@ -30,6 +33,13 @@ body{
 }
 
 #Logo {
+}
+
+#seperator{
+	width: 80%;
+	margin-left: 10%;
+	height: 5px;
+	border-bottom: thick solid grey;
 }
 
 /*#JoinBtnContainer Button{
@@ -60,14 +70,25 @@ button:focus{
 
 #leaderboard {
 	margin: 0 auto;
-	width: 80%;
-	background-color: #eee;
 	min-height: 50px;
 	text-decoration: inherit;
 }
 
-#leaderboard ul li {
+ul{
 	list-style: none;
+	widht: 80%;
+	padding-top: 20px;
+}
+
+ul li span{
+	width: 40%;
+	display: inline-block;
+}
+
+ol{
+	width: 80%;
+	min-height: 50px;
+	padding-top: 25px;
 }
 
 #leaderboard span{
@@ -75,4 +96,5 @@ button:focus{
 	width: 50%;
 	float: left;
 	display: inline-block;
+	paddiing: 25px;
 }
