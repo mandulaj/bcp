@@ -7,11 +7,12 @@
 #include <ESP8266WebServer.h>
 
 /* Set these to your desired credentials. */
-const char *ssid = "ESPap";
+char flowerID = '1';
+const char *ssid = "Flower " + flowerID;
 unsigned int count = 0;
 
 String key = "69696969";
-String IP = = "192.168.4.1";
+String IP = "192.168.4.1";
 unsigned int pollen = 100;
 
 ESP8266WebServer server(80);
@@ -21,7 +22,7 @@ ESP8266WebServer server(80);
 */
 void handleRoot() {
   count++;
-  String values = flowerId + ',' + String(count) + ',' + String(pollen) + ',';
+  String values = flowerID + ',' + String(count) + ',' + String(pollen) + ',';
   
   String msg = "http://" + IP + "/" + values + ',' + sha1(values + key);
   server.send(200, "text/html", "<h1>" + msg + "</h1>");
