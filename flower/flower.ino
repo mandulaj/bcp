@@ -1,8 +1,7 @@
 #include <Arduino.h>
 #include <Hash.h>
 #include <ESP8266WiFi.h>
-
-#include <WiFiClient.h>
+#include "./DNSServer.h"  
 #include <ESP8266WebServer.h>
 
 #define LED     2
@@ -10,11 +9,14 @@
 
 /* Set these to your desired credentials. */
 String flowerID = "1";
+const byte DNS_PORT = 53;          // Capture DNS requests on port 53
+DNSServer dnsServer;              // Create the DNS object
 const char *ssid = "Flower 1";
 unsigned int count = 0;
 
 String key = "69696969";
-String IP = "192.168.4.1";
+String IP = "192.168.137.1";
+IPAddress apIP(192, 168, 4, 1);
 
 unsigned int pollen = 100;
 bool pollen_updated = false;
@@ -29,7 +31,7 @@ void handleRoot() {
   String values = flowerID + ',' + String(count) + ',' + String(pollen) + ',';
   
   String msg = "http://" + IP + "/" + values + sha1(values + key);
-  server.send(200, "text/html", "<h1>" + msg + "</h1>");
+  server.send(200, "text/html", "<a style=\"color:orange;text-decoration:none;display:block;width:70vw;heigth:20vh;margin:30vh auto;padding-top:10vh;text-align:center;font-size:7vh;border:thick solid;\" href=\"" + msg + "\">Drop pollen</button>");
 
   pollen = 0;  
   delay(250);
@@ -43,8 +45,13 @@ void setup() {
   Serial.println();
   Serial.print("Configuring access point...");
   /* You can remove the password parameter if you want the AP to be open. */
+  WiFi.mode(WIFI_AP);
+  WiFi.softAPConfig(apIP, apIP, IPAddress(255, 255, 255, 0));
   WiFi.softAP(ssid);
 
+
+  dnsServer.start(DNS_PORT, "*", apIP);
+    
   IPAddress myIP = WiFi.softAPIP();
   Serial.print("AP IP address: ");
   Serial.println(myIP);
@@ -56,7 +63,7 @@ void setup() {
 }
 
 void loop() {
-  
+  dnsServer.processNextRequest();
   server.handleClient();
   
   if( millis() % 1000 == 0 && pollen < 100){
