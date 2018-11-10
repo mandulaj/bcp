@@ -8,7 +8,7 @@
 
 /* Set these to your desired credentials. */
 char flowerID = '1';
-const char *ssid = "Flower " + flowerID;
+const char *ssid = "Flower 1";
 unsigned int count = 0;
 
 String key = "69696969";
@@ -24,7 +24,7 @@ void handleRoot() {
   count++;
   String values = flowerID + ',' + String(count) + ',' + String(pollen) + ',';
   
-  String msg = "http://" + IP + "/" + values + ',' + sha1(values + key);
+  String msg = "http://" + IP + "/" + values + sha1(values + key);
   server.send(200, "text/html", "<h1>" + msg + "</h1>");
   
   delay(250);
