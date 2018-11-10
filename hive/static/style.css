@@ -1,0 +1,78 @@
+body{
+	padding: 0 auto;
+	margin: 0 auto;
+	wdith: 100%;
+	text-align: center;
+	font: calibri, tahoma, arial;
+}
+
+.Nav {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	border-bottom: thick;
+}
+
+.Nav span{
+	width:50%;
+	display: inline;	
+	float: left;
+	padding-top: 3vh;
+	padding-bottom: 3vh;
+	border-bottom: thick solid grey;
+}
+
+.Nav #a{
+	
+}
+
+.Nav #b{
+}
+
+#Logo {
+}
+
+/*#JoinBtnContainer Button{
+	margin: 50px;
+	padding: 20px 50px 20px 50px;
+	font-size: 20pt;
+	background: #fff;
+	border: none;
+}*/
+
+button{
+	width: 300px;
+	height: 100px;
+	text-size: 24pt;
+	margin:2px 2px 2px 0;
+	background:#C0C0C0;
+	border-width:5px;
+	border-color:#FFFFFF #808080 #808080 #FFFFFF;
+	padding:0;
+	font-family:Tahoma;
+	text-align:center;
+	focus:none;
+}
+
+button:focus{
+  outline:none;
+}
+
+#leaderboard {
+	margin: 0 auto;
+	width: 80%;
+	background-color: #eee;
+	min-height: 50px;
+	text-decoration: inherit;
+}
+
+#leaderboard ul li {
+	list-style: none;
+}
+
+#leaderboard span{
+	text-decoration: none;
+	width: 50%;
+	float: left;
+	display: inline-block;
+}
