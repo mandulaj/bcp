@@ -127,7 +127,17 @@ function checkHash(token){
 }
 
 
-//checkHash();
+function genHash(id, count, polen){
+  const hash = crypto.createHash('sha1');
+  let text = id + "," + count + "," + polen + "," + SECRET;
+  hash.update(text);
+  return  "localhost:8080/deposit/?token=" +id + "," + count + "," + polen + "," +hash.digest('hex')
+}
+
+for(let i = 1; i < 10; i++){
+  console.log(genHash(1, i, 10));
+}
+
 
 let users = new Users();
 let flowers = new Flowers(3);
