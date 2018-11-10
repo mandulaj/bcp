@@ -17,9 +17,9 @@ body{
 	width:50%;
 	display: inline;	
 	float: left;
-	padding-top: 5%;
-	padding-bottom: 5%;
-	border-bottom: thick solid orange;
+	padding-top: 3vh;
+	padding-bottom: 3vh;
+	border-bottom: thick solid grey;
 }
 
 .Nav #a{
@@ -30,19 +30,32 @@ body{
 }
 
 #Logo {
-	font-size: 50pt;
-	text-outline: #33f;
-	background-image:url(res/logo_90s_theme_1.png);
-	height: 200px;
-	background-size: contain;
 }
 
-#JoinBtnContainer Button{
+/*#JoinBtnContainer Button{
 	margin: 50px;
 	padding: 20px 50px 20px 50px;
 	font-size: 20pt;
 	background: #fff;
 	border: none;
+}*/
+
+button{
+	width: 300px;
+	height: 100px;
+	text-size: 24pt;
+	margin:2px 2px 2px 0;
+	background:#C0C0C0;
+	border-width:5px;
+	border-color:#FFFFFF #808080 #808080 #FFFFFF;
+	padding:0;
+	font-family:Tahoma;
+	text-align:center;
+	focus:none;
+}
+
+button:focus{
+  outline:none;
 }
 
 #leaderboard {
