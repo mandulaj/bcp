@@ -135,7 +135,7 @@ let flowers = new Flowers(3);
 
 app.use(cookieParser());
 
-app.use('/static', express.static('static'))
+
 
 app.get('/deposit', (req, res) => {
 
@@ -220,5 +220,7 @@ app.get("/clear", (req, res) => {
   res.end();
 })
 
+
+app.use('/',  express.static('static'))
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
