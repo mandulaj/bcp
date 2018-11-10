@@ -4,11 +4,18 @@ const cookieParser = require('cookie-parser');
 const app = express()
 const port = 8080
 
+const SECRET="69696969";
+
+
 class User {
   constructor(username, id) {
     this.username = username;
     this.polen = 0;
     this.id = id;
+  }
+
+  addPolen(polen){
+    this.polen += polen
   }
 
 }
@@ -38,6 +45,15 @@ class Users {
     return false;
   }
 
+  isUserID(id){
+    for(let i = 0; i < this.users.length; i++){
+      if(this.users[i].id === id){
+        return true;
+      }
+    }
+    return false;
+  }
+
   getIndexByUsername(username){
     for(let i = 0; i < this.users.length; i++){
       if(this.users[i].username === username){
@@ -55,37 +71,108 @@ class Users {
     }
     return -1;
   }
+  addPolen(id, polen){
+    this.users[this.getIndexById(id)].addPolen(polen);
+  }
 }
 
+class Flower{
+  constructor(id){
+    this.id = id;
+    this.usedCounts = [];
+  }
+  checkCount(count){
+    for(let i = 0; i < this.usedCounts.length; i++){
+      if(this.usedCounts[i] == count){
+        return false;
+      }
+    }
+    return true;
+  }
+  appendCount(count){
+    this.usedCounts.push(count)
+  }
+}
+
+class Flowers{
+  constructor(n){
+    this.flowers = []
+    for(let i = 0; i < n ; i++){
+      this.addFlower(i);
+    }
+  }
+  addFlower(id){
+    this.flowers.push(new Flower(id))
+  }
+
+  checkFlower(id, count){
+    if(id < this.flowers.length && this.flowers[id].checkCount(count)){
+      this.flowers[id].appendCount(count)
+      return true;
+    } else {
+      return false;
+    }
+  }
 
 
-function checkHash(){
+
+}
+
+function checkHash(token){
   const hash = crypto.createHash('sha1');
-
-  hash.update('abc');
-  console.log("HEllo:", hash.digest('hex'));
+  let things = token.split(',');
+  let text = things[0] + "," + things[1] + "," + things[2] + "," + SECRET;
+  hash.update(text);
+  return (hash.digest('hex') === things[3]);
 }
 
 
-checkHash();
+//checkHash();
 
 let users = new Users();
+let flowers = new Flowers(3);
 
 
 app.use(cookieParser());
 
-app.get('/', (req, res) => {
-  if(typeof req.cookies.beeID != "undefined"){
-    res.send(200, "Your ID:" + req.cookies.beeID)
+app.use('/static', express.static('static'))
+
+app.get('/deposit', (req, res) => {
+
+  if(typeof req.cookies.beeID === "undefined" || !users.isUserID(req.cookies.beeID)) {
+    res.redirect(302, '/new');
   } else {
-    res.send(200, "Hi");
+    //console.log(req.query.token)
+    if(typeof req.query.token === "undefined" ||  req.query.token.split(",").length != 4){
+      res.send(404, "No token");
+    } else if(checkHash(req.query.token)){ // Authenticate
+      let things = req.query.token.split(",");
+      let id = parseInt(things[0])
+      let count = parseInt(things[1])
+      let polen = parseInt(things[2])
+
+      //console.log(id, count, polen);
+
+      if(flowers.checkFlower(id, count)){
+        users.addPolen(req.cookies.beeID, polen);
+        res.send(200, "Token submitted")
+      } else {
+        res.send(404, "Token reused")
+      }
+    } else {
+      res.send(404, "Wrong hash")
+    }
+
   }
 })
 
-app.use('/static', express.static('static'))
 
+app.get("/new", (req, res)=>{
 
-app.get("/new", (req, res) => {
+  res.send("Create new account!");
+})
+
+app.get("/newUser", (req, res) => {
 
 
   if(typeof req.param("username") == 'undefined') {
@@ -118,6 +205,20 @@ app.get("/new", (req, res) => {
   });
 })
 
+app.get("/stats",(req, res)=>{
+  let resData = [];
+  for(let user in users.users){
+    resData.push({"username":users.users[user].username, "polen":users.users[user].polen})
+  }
+
+  res.json(200, resData)
+})
+
+app.get("/clear", (req, res) => {
+  res.clearCookie("beeID")
+  res.send("Cleard ID");
+  res.end();
+})
 
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
