@@ -15,7 +15,7 @@ const char *ssid = "Flower 1";
 unsigned int count = 0;
 
 String key = "69696969";
-String IP = "192.168.137.1:8080";
+String IP = "192.168.137.1:8080/deposit/?token=";
 IPAddress apIP(192, 168, 4, 1);
 
 unsigned int pollen = 100;
@@ -30,7 +30,7 @@ void handleRoot() {
   count++;
   String values = flowerID + ',' + String(count) + ',' + String(pollen) + ',';
   
-  String msg = "http://" + IP + "/" + values + sha1(values + key);
+  String msg = "http://" + IP + values + sha1(values + key);
   server.send(200, "text/html", "<a style=\"color:orange;text-decoration:none;display:block;width:70vw;heigth:20vh;margin:30vh auto;padding-top:10vh;text-align:center;font-size:7vh;border:thick solid;\" href=\"" + msg + "\">Drop pollen</button>");
 
   pollen = 0;  
