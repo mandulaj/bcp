@@ -96,18 +96,25 @@ body{
 }
 
 button{
-	width: 100px;
+	min-width: 100px;
 	height: 50px;
 	text-size: 24pt;
 	background-color: white;
-	position: absolute;
-	float: right;
 	border: thick solid orange;
 	color: orange;
 	font-size: 18pt;
-	left: 90vw;
-	top: 1vh;
 	transition: ease all 1s;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 25px;
+	margin-top: 25px;
+}
+
+.floating{
+	position: absolute;
+	float: right;
+	left: 90vw;
+	top: -1.5vh;
 }
 
 button:hover{
@@ -119,6 +126,26 @@ button:hover{
 
 button:focus{
   outline:none;
+}
+
+#instructions{
+	background-color: #fff;
+	width: 80vw;
+	margin: 0 auto;
+	border: thick solid orange;
+	font-family: "Roboto";
+	font-size: 16pt;
+	margin-bottom: 25px;
+	transition: ease all 1s;
+}
+
+#instructionstext{
+	display: none;
+	transition: ease all 1s;
+}
+
+#instructionstext:focus{
+	transition: ease all 1s;
 }
 
 #leaderboardContainer{

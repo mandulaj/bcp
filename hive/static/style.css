@@ -3,6 +3,10 @@
 	transition: ease all 0.5s;
 }
 
+#instructions{
+	display: none;
+}
+
 body{
 	padding: 0 auto;
 	margin: 0 auto;

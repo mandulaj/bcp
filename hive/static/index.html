@@ -8,6 +8,8 @@
 
 <script type="text/javascript">
 
+var toggle = 0;
+
 function changeThemeNew() {
 	document.getElementById('theme').href = 'stylenew.css';
 	console.log("logged yooooo1");
@@ -17,6 +19,16 @@ function changeThemeNew() {
 function changeThemeOld() {
 	document.getElementById('theme').href = 'style.css';
 	console.log("logged yooooo2");
+};
+
+function toggleInstructions() {
+	if(toggle==0){
+		document.getElementById('instructionstext').style.display = "block";
+		toggle = 1;
+	}else{
+		document.getElementById('instructionstext').style.display = "none";
+		toggle = 0;
+	}
 };
 
 </script>
@@ -41,7 +53,20 @@ function changeThemeOld() {
 </div>
 
 <div id="JoinBtnContainer">
-	<button onclick="window.location.href='/new'">Join</button>
+	<button class="floating" onclick="window.location.href='/new'">Join</button>
+</div>
+
+<div id="instructions">
+	<button onClick="toggleInstructions()">instructions</button>
+    <div id="instructionstext">
+    <p>1. Connect to the Hive using your phone's wifi network</p>
+    <p>2. Enter your name and swear allegence to the Queen's Hive</p>
+    <p>3. Find a Flower and connect to it's hotspot</p>
+    <p>4. Pick up Pollen and return it to the Hive</p>
+    <p>5. Reconnect to the Hive and deposit the Pollen</p>
+    <p>6. Be the best Worker Bee</p>
+    <p>(Note: 1 Deposition per Pollen Transaction. Pollen recouperates with time. We as a<br /> group are not responsible for any possibility of possible addiction to the <br />Worker Bee lifestyle. You have been warned. Enjoy!)</p>
+	</div>
 </div>
 
 <div id="leaderboardContainer">
