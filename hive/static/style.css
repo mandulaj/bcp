@@ -1,3 +1,7 @@
+*{
+	cursor: url(res/cur1.png), auto;
+}
+
 body{
 	padding: 0 auto;
 	margin: 0 auto;
@@ -5,7 +9,8 @@ body{
 	text-align: center;
 	font-family: "Courier New", Courier, monospace;
 	text-font: "Courier New", Courier, monospace;
-	/*background: url(res/twilight.gif);*/
+	background: url(res/bee90s_c.gif);
+	background-repeat:space;	
 }
 
 .Nav {
@@ -33,6 +38,7 @@ body{
 }
 
 #Logo {
+	padding: 25px;
 }
 
 #seperator{
@@ -66,6 +72,12 @@ button{
 
 button:focus{
   outline:none;
+}
+
+#leaderboardContainer{
+	background-color: #fff;
+	width: 80%;
+	margin: 0 auto;
 }
 
 #leaderboard {
