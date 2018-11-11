@@ -4,22 +4,39 @@
 <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 <script src="index.js"></script>
 
+<link href="stylenew.css" rel="stylesheet" type="text/css" id="theme">
+
+<script type="text/javascript">
+
+function changeThemeNew() {
+	document.getElementById('theme').href = 'stylenew.css';
+	console.log("logged yooooo1");
+};
+
+function changeThemeOld() {
+	document.getElementById('theme').href = 'style.css';
+	console.log("logged yooooo1");
+};
+
+</script>
+
 <meta charset="UTF-8">
 <title>Leaderboard</title>
-<link href="style.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <body>
 
 <div class="Nav">
-	<span id="a">90'S THEME</span>
-    <span id="b">CURRENT THEME</span>
+	<span id="a" onClick="changeThemeOld()">90'S THEME</span>
+    <span id="b" onClick="changeThemeNew()">CURRENT THEME</span>
 </div>
 
 <!--<img src="res/bee90s_w.gif" width="250" height="200" />-->
 
 <div id="Logo">
-<img src="res/logo_90s_theme_1.jpg" height="250px" /> 
+<img id="Logo90s" src="res/logo_90s_theme_1.jpg" height="250px" />
+<span id="LogoCurrent"><img src="res/beemodern1.png"/>POLLEN MINING</span>
 </div>
 
 <div id="JoinBtnContainer">
@@ -45,6 +62,7 @@
         </li>
   </ol>
 </div>
+<p>&nbsp;</p>
 </body>
 
 </html>

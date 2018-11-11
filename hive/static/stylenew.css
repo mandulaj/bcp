@@ -1,5 +1,4 @@
 *{
-	cursor: url(res/cur1.png), auto;
 }
 
 body{
@@ -9,8 +8,6 @@ body{
 	text-align: center;
 	font-family: "Courier New", Courier, monospace;
 	text-font: "Courier New", Courier, monospace;
-	background: url(res/bee90s_c.gif);
-	background-repeat:space;	
 }
 
 .Nav {
@@ -26,7 +23,7 @@ body{
 	float: left;
 	padding-top: 3vh;
 	padding-bottom: 3vh;
-	border-bottom: thick solid grey;
+	border-bottom: thick solid orange;
 	background-color: #fff;
 }
 
@@ -52,39 +49,70 @@ body{
 
 #Logo {
 	padding: 25px;
+	background: none;
 }
 
-#LogoCurrent{
+#Logo90s{
 	display: none;
 }
 
-#seperator{
-	width: 80%;
-	margin-left: 10%;
-	height: 5px;
-	border-bottom: thick solid grey;
+@font-face {
+    font-family: "Roboto-Thin";
+    src: url("res/Roboto-Thin.ttf");
 }
 
-/*#JoinBtnContainer Button{
-	margin: 50px;
-	padding: 20px 50px 20px 50px;
-	font-size: 20pt;
-	background: #fff;
-	border: none;
-}*/
+@font-face {
+    font-family: "Roboto";
+    src: url("res/Roboto-Regular.ttf");
+}
+
+#LogoCurrent{
+	width: 80vw;
+	margin: 0 auto;
+	margin-top: 5vh;
+	padding: 5vh 0 5vh 0;
+	display: inline-block;
+	font-family: "Roboto-Thin";
+	font-size: 90pt;
+	font-style: bold;
+	border: thick solid orange;
+	color: orange;
+	text-height: 300px;
+	cursor: default;
+}
+
+#LogoCurrent img {
+	display: inline-block;
+	height: 115px;
+	margin-right: 2vw;
+}
+
+#seperator{
+	width: 100%;
+	height: 5px;
+	border-bottom: thick solid orange;
+}
 
 button{
-	width: 300px;
-	height: 100px;
+	width: 100px;
+	height: 50px;
 	text-size: 24pt;
-	margin:2px 2px 2px 0;
-	background:#C0C0C0;
-	border-width:5px;
-	border-color:#FFFFFF #808080 #808080 #FFFFFF;
-	padding:0;
-	font-family:Tahoma;
-	text-align:center;
-	focus:none;
+	background-color: white;
+	position: absolute;
+	float: right;
+	border: thick solid orange;
+	color: orange;
+	font-size: 18pt;
+	left: 90vw;
+	top: 1vh;
+	transition: ease all 1s;
+}
+
+button:hover{
+	background: orange;
+	color: white;
+	transition: ease all 0.5s;
+	cursor: pointer;
 }
 
 button:focus{
@@ -93,20 +121,26 @@ button:focus{
 
 #leaderboardContainer{
 	background-color: #fff;
-	width: 80%;
+	width: 80vw;
 	margin: 0 auto;
+	border: thick solid orange;
+	font-family: "Roboto";
+	font-size: 16pt;
 }
 
 #leaderboard {
 	margin: 0 auto;
-	min-height: 50px;
 	text-decoration: inherit;
+	padding: 2vh;
+	padding-left: 0;
+	padding-right: 0;
 }
 
 ul{
 	list-style: none;
-	width: 80%;
-	padding-top: 20px;
+	width: 100%;
+
+	padding: 0;
 }
 
 ul li span{
@@ -117,7 +151,6 @@ ul li span{
 ol{
 	width: 80%;
 	min-height: 50px;
-	padding-top: 25px;
 }
 
 #leaderboard span{
@@ -125,5 +158,4 @@ ol{
 	width: 50%;
 	float: left;
 	display: inline-block;
-	paddiing: 25px;
 }
