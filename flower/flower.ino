@@ -33,7 +33,7 @@ void handleCollect() {
   String values = flowerID + ',' + String(count) + ',' + String(pollen) + ',';
   
   String msg = "http://" + IP + "deposit/?token=" + values + sha1(values + key);
-  server.send(200, "text/html", "<a style=\"color:orange;text-decoration:none;display:block;width:70vw;heigth:20vh;margin:10vh auto;padding-bottom:10vh;padding-top:10vh;text-align:center;font-size:7vh;border:thick solid;\" href=\"" + msg + "\">Drop Pollen</a><style>a:hover{background-color:orange;color:white;}</style> <br>><p style=\"text-align:center;font-size:40pt;\">You got " + String(pollen) + " pollen!</p>");
+  server.send(200, "text/html", "<a style=\"color:orange;text-decoration:none;display:block;width:70vw;heigth:20vh;margin:10vh auto;padding-bottom:10vh;padding-top:10vh;text-align:center;font-size:7vh;border:thick solid;\" href=\"" + msg + "\">Drop Pollen</a><style>a:hover{background-color:gold;}</style> <br>><p style=\"text-align:center;font-size:40pt;\">You got " + String(pollen) + " pollen!</p>");
 
   pollen = 0;
 }
