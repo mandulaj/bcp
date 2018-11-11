@@ -2,7 +2,6 @@
 
 function updateStats(){
   $.getJSON( "/stats", function( data ) {
-    console.log(data)
     data.sort((a, b) => b.polen - a.polen);
     let leaderboard = $("#leaderboard")
     leaderboard.html("");
