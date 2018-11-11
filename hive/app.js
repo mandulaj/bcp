@@ -178,15 +178,19 @@ app.get('/deposit', (req, res) => {
 
 
 app.get("/new", (req, res)=>{
+  const fileDirectory = __dirname + '/static/';
 
-  res.send("Create new account!");
-})
+   res.sendFile('new.html', {root: fileDirectory}, (err) => {
+     res.end();
+
+     if (err) throw(err);
+   });
+});
 
 app.get("/newUser", (req, res) => {
 
-
-  if(typeof req.param("username") == 'undefined') {
-    return res.send(404, "Provide username")
+  if(typeof req.param("username") == 'undefined' || req.param("username") == "") {
+    return res.send(400, "Provide username <a href='/new'>Try Again</a>")
   }
 
   let username = req.param("username");
@@ -204,9 +208,9 @@ app.get("/newUser", (req, res) => {
       res.cookie('beeID', id);
 
 
-      res.send(200, "Success");
+      res.redirect(302, "/");
     } else {
-      res.send(400, "Username exists");
+      res.send(400, "Username exists <a href='/new'>Try Again</a>");
     }
 
 
