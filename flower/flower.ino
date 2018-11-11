@@ -4,7 +4,7 @@
 #include "./DNSServer.h"  
 #include <ESP8266WebServer.h>
 
-#define LED     2
+#define LED     D2
 
 
 /* Set these to your desired credentials. */
@@ -26,14 +26,14 @@ ESP8266WebServer server(80);
 
 void handleRoot() {
 
-  server.send(200, "text/html", "<a style=\"color:orange;text-decoration:none;display:block;width:70vw;heigth:20vh;margin:30vh auto;padding-top:10vh;text-align:center;font-size:7vh;border:thick solid;\" href=\"/collect\">Collect Pollen</button>");
+  server.send(200, "text/html", "<a style=\"color:orange;text-decoration:none;display:block;width:70vw;heigth:20vh;margin:10vh auto;padding-bottom:10vh;padding-top:10vh;text-align:center;font-size:7vh;border:thick solid;\" href=\"/collect\">Collect Pollen</button>");
 }
 void handleCollect() {
   count++;
   String values = flowerID + ',' + String(count) + ',' + String(pollen) + ',';
   
   String msg = "http://" + IP + "deposit/?token=" + values + sha1(values + key);
-  server.send(200, "text/html", "<a style=\"color:orange;text-decoration:none;display:block;width:70vw;heigth:20vh;margin:30vh auto;padding-top:10vh;text-align:center;font-size:7vh;border:thick solid;\" href=\"" + msg + "\">Drop Pollen</button> <br><br><p>You got " + String(pollen) + " pollen!</p>");
+  server.send(200, "text/html", "<a style=\"color:orange;text-decoration:none;display:block;width:70vw;heigth:20vh;margin:10vh auto;padding-bottom:10vh;padding-top:10vh;text-align:center;font-size:7vh;border:thick solid;\" href=\"" + msg + "\">Drop Pollen</a><style>a:hover{background-color:orange;color:white;}</style> <br>><p style=\"text-align:center;font-size:40pt;\">You got " + String(pollen) + " pollen!</p>");
 
   pollen = 0;
 }
@@ -73,7 +73,7 @@ void loop() {
       pollen_updated = true;
       pollen++;
 
-      int val = map(pollen, 0, 100, 1023, 0);
+      int val = map(pollen, 10, 100, 1023, 0);
       analogWrite(LED, val);
     }
     
