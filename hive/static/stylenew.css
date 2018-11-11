@@ -5,7 +5,7 @@
 body{
 	padding: 0 auto;
 	margin: 0 auto;
-	wdith: 100%;
+	width: 100%;
 	text-align: center;
 	font-family: "Courier New", Courier, monospace;
 	text-font: "Courier New", Courier, monospace;
@@ -113,7 +113,7 @@ button{
 .floating{
 	position: absolute;
 	float: right;
-	left: 90vw;
+	right: 1vw;
 	top: -1.5vh;
 }
 
