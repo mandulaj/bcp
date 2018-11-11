@@ -1,5 +1,6 @@
 *{
 	cursor: url(res/cur1.png), auto;
+	transition: ease all 0.5s;
 }
 
 body{
